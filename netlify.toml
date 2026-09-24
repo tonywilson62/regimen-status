@@ -1,0 +1,19 @@
+[build]
+  publish = "public"
+  command = "echo no build step"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+
+[[headers]]
+  for = "/seed.json"
+  [headers.values]
+    Cache-Control = "no-store"

@@ -1,0 +1,649 @@
+{
+ "schema": 1,
+ "streams": [
+  {
+   "id": "s-breast",
+   "name": "Breast",
+   "active": true
+  },
+  {
+   "id": "s-cns",
+   "name": "CNS",
+   "active": true
+  },
+  {
+   "id": "s-colorectal",
+   "name": "Colorectal",
+   "active": true
+  },
+  {
+   "id": "s-gu-prostate",
+   "name": "GU Prostate",
+   "active": true
+  },
+  {
+   "id": "s-gu-non-prostate",
+   "name": "GU Non Prostate",
+   "active": true
+  },
+  {
+   "id": "s-gynaecology",
+   "name": "Gynaecology",
+   "active": true
+  },
+  {
+   "id": "s-head-and-neck",
+   "name": "Head and Neck",
+   "active": true
+  },
+  {
+   "id": "s-hsct",
+   "name": "HSCT",
+   "active": true
+  },
+  {
+   "id": "s-ici-toxicity",
+   "name": "ICI toxicity",
+   "active": true
+  },
+  {
+   "id": "s-leu-all",
+   "name": "LEU ALL",
+   "active": true
+  },
+  {
+   "id": "s-leu-aml-apl-cmml",
+   "name": "LEU AML APL CMML",
+   "active": true
+  },
+  {
+   "id": "s-leu-cll-cml-hc-t-cell",
+   "name": "LEU CLL CML HC T-Cell",
+   "active": true
+  },
+  {
+   "id": "s-leu-mds-mpn",
+   "name": "LEU MDS MPN",
+   "active": true
+  },
+  {
+   "id": "s-lung",
+   "name": "Lung",
+   "active": true
+  },
+  {
+   "id": "s-lymphoma",
+   "name": "Lymphoma",
+   "active": true
+  },
+  {
+   "id": "s-skin",
+   "name": "Skin",
+   "active": true
+  },
+  {
+   "id": "s-nets",
+   "name": "NETs",
+   "active": true
+  },
+  {
+   "id": "s-pcn",
+   "name": "PCN",
+   "active": true
+  },
+  {
+   "id": "s-sarcoma",
+   "name": "Sarcoma",
+   "active": true
+  },
+  {
+   "id": "s-ugi",
+   "name": "UGI",
+   "active": true
+  }
+ ],
+ "reviewers": [
+  {
+   "id": "r-nancy",
+   "name": "Nancy",
+   "active": true
+  },
+  {
+   "id": "r-caroline",
+   "name": "Caroline",
+   "active": true
+  }
+ ],
+ "snapshots": [
+  {
+   "id": "snap-seed",
+   "asAt": null,
+   "recordedAt": "2026-09-24T02:30:32.063777+00:00",
+   "device": "Spreadsheet import",
+   "note": "Imported from publication_state_of_play.xlsx",
+   "rows": {
+    "s-breast": {
+     "counts": {
+      "in_dev": 21,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 2,
+      "published": 100
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-cns": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 5,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 12
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 1,
+      "awaiting_publication": 0
+     },
+     "note": "1 being updated",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-colorectal": {
+     "counts": {
+      "in_dev": 1,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 9,
+      "discontinued": 0,
+      "published": 93
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-gu-prostate": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 2,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 2,
+      "published": 35
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-gu-non-prostate": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 1,
+      "published": 53
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-gynaecology": {
+     "counts": {
+      "in_dev": 4,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 1,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 61
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 1,
+      "awaiting_publication": 0
+     },
+     "note": "1 being updated",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-head-and-neck": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 1,
+      "discontinued": 0,
+      "published": 36
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-hsct": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 1,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 33
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-ici-toxicity": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 2
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-leu-all": {
+     "counts": {
+      "in_dev": 1,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 30
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-leu-aml-apl-cmml": {
+     "counts": {
+      "in_dev": 1,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 45
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-leu-cll-cml-hc-t-cell": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 25
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-leu-mds-mpn": {
+     "counts": {
+      "in_dev": 1,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 4
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-lung": {
+     "counts": {
+      "in_dev": 1,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 1,
+      "awaiting_publication": 0,
+      "superseded": 10,
+      "discontinued": 0,
+      "published": 89
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-lymphoma": {
+     "counts": {
+      "in_dev": 3,
+      "being_updated": 0,
+      "in_tech_review": 1,
+      "completed_tech_review": 30,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 58
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 4,
+      "awaiting_publication": 0
+     },
+     "note": "4 being updated",
+     "tr": {
+      "one": 0,
+      "none": 1,
+      "byReviewer": {
+       "r-nancy": 1,
+       "r-caroline": 1
+      }
+     }
+    },
+    "s-skin": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 35
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-nets": {
+     "counts": {
+      "in_dev": 3,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 2,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 2,
+      "published": 20
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-pcn": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 4,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 29
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-sarcoma": {
+     "counts": {
+      "in_dev": 3,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 4,
+      "awaiting_publication": 0,
+      "superseded": 0,
+      "discontinued": 0,
+      "published": 31
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    },
+    "s-ugi": {
+     "counts": {
+      "in_dev": 0,
+      "being_updated": 0,
+      "in_tech_review": 0,
+      "completed_tech_review": 2,
+      "awaiting_publication": 0,
+      "superseded": 4,
+      "discontinued": 0,
+      "published": 98
+     },
+     "updates": {
+      "in_tech_review": 0,
+      "completed_tech_review": 0,
+      "awaiting_publication": 0
+     },
+     "note": "",
+     "tr": {
+      "one": 0,
+      "none": 0,
+      "byReviewer": {
+       "r-nancy": 0,
+       "r-caroline": 0
+      }
+     }
+    }
+   }
+  }
+ ],
+ "changeLog": []
+}

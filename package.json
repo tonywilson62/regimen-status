@@ -1,0 +1,10 @@
+{
+  "name": "actnow-publication-state",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ACT-NOW SACT Regimen Library publication state of play",
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

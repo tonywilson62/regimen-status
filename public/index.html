@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<title>ACT-NOW publication state of play</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231F3A5F'/><circle cx='8' cy='16' r='3' fill='%23A9C0DC'/><circle cx='16' cy='16' r='3' fill='%236F90BD'/><circle cx='24' cy='16' r='3.5' fill='%2360B08A'/></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <form id="gateForm" class="gate-card" autocomplete="off">
+    <h1>ACT-NOW</h1>
+    <p class="gate-sub">SACT Regimen Library publication state of play</p>
+    <label for="pass">Passcode</label>
+    <input id="pass" type="password" autocomplete="current-password" required>
+    <div id="firstRun" hidden>
+      <label for="pass2">Confirm passcode</label>
+      <input id="pass2" type="password" autocomplete="new-password">
+      <label for="seedDate">Date the spreadsheet figures reflect</label>
+      <input id="seedDate" type="date">
+      <p class="gate-hint">This site has no data yet. The passcode you choose here encrypts everything, and the spreadsheet figures become the first snapshot on the date above.</p>
+    </div>
+    <p id="gateMsg" class="gate-msg" role="alert"></p>
+    <button id="gateBtn" type="submit" class="btn primary">Unlock</button>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <div class="brand">
+      <h1>Publication state of play</h1>
+      <p>ACT-NOW SACT Regimen Library</p>
+    </div>
+    <div class="top-actions">
+      <span id="syncState" class="sync"></span>
+      <button class="btn ghost" data-action="lock">Lock</button>
+    </div>
+  </header>
+
+  <section class="timeline-wrap" aria-label="Snapshots over time">
+    <div class="timeline-head">
+      <div class="asat">
+        <label for="asAtInput">State of play as at</label>
+        <input id="asAtInput" type="date">
+        <button class="btn ghost small" data-action="go-latest">Latest</button>
+      </div>
+      <div class="compare">
+        <label for="compareSel">Show change since</label>
+        <select id="compareSel"></select>
+      </div>
+    </div>
+    <div id="timeline" class="timeline"></div>
+    <p id="viewBanner" class="view-banner" hidden></p>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="play" aria-selected="true">State of play</button>
+    <button role="tab" data-tab="tr">Technical review</button>
+    <button role="tab" data-tab="trends">Trends</button>
+    <button role="tab" data-tab="snapshots">Snapshots</button>
+    <button role="tab" data-tab="settings">Settings</button>
+  </nav>
+
+  <div id="editBar" class="edit-bar" hidden>
+    <span id="editMsg"></span>
+    <div>
+      <button class="btn ghost" data-action="discard">Discard</button>
+      <button class="btn primary" data-action="save">Save snapshot</button>
+    </div>
+  </div>
+
+  <main id="main"></main>
+</div>
+
+<div id="modal" class="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h2 id="modalTitle"></h2>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -236,6 +236,14 @@ function updCount(row, stageId) {
   return 0;
 }
 
+/* Regimens created for a stream: published, superseded and discontinued, plus new regimens
+   in pre-publication. Updates to published regimens are left out because the regimen is
+   already counted as published. Matches "Total regimens authored" for a single stream. */
+function streamTotal(row) {
+  const r = normRow(row);
+  return r.counts.published + r.counts.superseded + r.counts.discontinued + PRE.reduce((a, s) => a + newCount(r, s.id), 0);
+}
+
 /* The summary figures, following the spreadsheet's own formulas. */
 function metrics(rows, ids) {
   const list = (ids || Object.keys(rows)).map((id) => normRow(rows[id]));
@@ -570,6 +578,7 @@ function renderPlay(snap, cmp) {
   </div>
   <details class="defs"><summary>How these figures are calculated</summary><dl>
     <dt>Total regimens authored</dt><dd>New regimens in pre-publication, plus published, superseded and discontinued. Updates to published regimens are left out because the regimen is already counted as published.</dd>
+    <dt>Total regimens (table column)</dt><dd>Total regimens authored for each tumour stream: published, superseded and discontinued, plus new regimens in pre-publication. A published regimen that is being updated is counted once, as published.</dd>
     <dt>New regimens in pre-publication</dt><dd>Everything in development, plus regimens in technical review, review complete or awaiting publication that have never been published. The spreadsheet labelled this "In prepublication".</dd>
     <dt>Updates in pre-publication</dt><dd>Everything being updated, plus the updates recorded against the three review and publication stages.</dd>
     <dt>Passed authoring</dt><dd>Published, superseded and discontinued, plus new regimens in technical review, review complete or awaiting publication.</dd>
@@ -578,7 +587,7 @@ function renderPlay(snap, cmp) {
   const warns = streams.map((s) => ({ s, w: rowWarnings(rows[s.id]) })).filter((x) => x.w.length);
   const warnHtml = warns.length ? `<div class="warnings"><strong>${warns.length} stream${warns.length === 1 ? " does" : "s do"} not reconcile</strong><ul>${warns.map((x) => `<li>${esc(x.s.name)}: ${x.w.map(esc).join("; ")}</li>`).join("")}</ul></div>` : "";
 
-  const head = `<tr><th>Tumour stream</th>${STAGES.map((s, i) => `<th class="${i === PRE.length ? "group" : ""}"><span class="sw" style="--c:var(--s-${s.id})"></span>${esc(s.short)}</th>`).join("")}<th style="text-align:left">Note</th></tr>`;
+  const head = `<tr><th>Tumour stream</th>${STAGES.map((s, i) => `<th class="${i === PRE.length ? "group" : ""}"><span class="sw" style="--c:var(--s-${s.id})"></span>${esc(s.short)}</th>`).join("")}<th class="group total-col">Total regimens</th><th style="text-align:left">Note</th></tr>`;
   const body = streams.map((st) => {
     const r = normRow(rows[st.id]);
     const c = cmpRows ? normRow(cmpRows[st.id]) : null;
@@ -601,10 +610,10 @@ function renderPlay(snap, cmp) {
       return `<td class="${cls}${v ? "" : " zero"}">${v}${u}${deltaHtml(v, c ? c.counts[s.id] : 0, show && !!c)}</td>`;
     }).join("");
     const note = editing ? `<input class="txt" type="text" maxlength="200" value="${esc(r.note)}" data-edit="note" data-stream="${esc(st.id)}" aria-label="${esc(st.name + " note")}">` : esc(r.note);
-    return `<tr class="${st.active ? "" : "retired"}"><td>${esc(st.name)}${st.active ? "" : " (retired)"}${w.length ? `<span class="flag" title="${esc(w.join("\n"))}">!</span>` : ""}</td>${cells}<td class="note">${note}</td></tr>`;
+    return `<tr class="${st.active ? "" : "retired"}"><td>${esc(st.name)}${st.active ? "" : " (retired)"}${w.length ? `<span class="flag" title="${esc(w.join("\n"))}">!</span>` : ""}</td>${cells}<td class="group total-col">${streamTotal(r)}${deltaHtml(streamTotal(r), c ? streamTotal(c) : 0, show && !!c)}</td><td class="note">${note}</td></tr>`;
   }).join("");
-  const foot = `<tr><td>Total</td>${STAGES.map((s, i) => `<td class="${i === PRE.length ? "group" : ""}">${m.totals[s.id]}${deltaHtml(m.totals[s.id], mc?.totals[s.id] ?? 0, show)}</td>`).join("")}<td></td></tr>
-    <tr class="sub"><td>Not previously published</td>${STAGES.map((s, i) => `<td class="${i === PRE.length ? "group" : ""}">${s.pre ? m.news[s.id] : ""}</td>`).join("")}<td></td></tr>`;
+  const foot = `<tr><td>Total</td>${STAGES.map((s, i) => `<td class="${i === PRE.length ? "group" : ""}">${m.totals[s.id]}${deltaHtml(m.totals[s.id], mc?.totals[s.id] ?? 0, show)}</td>`).join("")}<td class="group total-col">${m.authored}${deltaHtml(m.authored, mc?.authored ?? 0, show)}</td><td></td></tr>
+    <tr class="sub"><td>Not previously published</td>${STAGES.map((s, i) => `<td class="${i === PRE.length ? "group" : ""}">${s.pre ? m.news[s.id] : ""}</td>`).join("")}<td class="group"></td><td></td></tr>`;
 
   const snapInfo = `<p class="small muted">Snapshot for ${fmtDate(snap.asAt)}, recorded ${fmtDateTime(snap.updatedAt || snap.recordedAt)}${snap.device ? " on " + esc(snap.device) : ""}.${snap.note ? " " + esc(snap.note) + (/[.!?]$/.test(snap.note) ? "" : ".") : ""}${cmp && !view.editing ? ` Changes shown are since ${fmtDate(cmp.asAt)}.` : ""}</p>`;
 
@@ -783,12 +792,12 @@ function exportCsv() {
   const out = [];
   out.push(["State of play as at", fmtDate(snap.asAt)]);
   out.push([]);
-  out.push(["Tumour stream", ...STAGES.map((s) => s.label), ...SPLIT.map((id) => "Updates in " + stageLabel[id].toLowerCase()), "Note"]);
+  out.push(["Tumour stream", ...STAGES.map((s) => s.label), ...SPLIT.map((id) => "Updates in " + stageLabel[id].toLowerCase()), "Total regimens", "Note"]);
   for (const st of streams) {
     const r = normRow(rows[st.id]);
-    out.push([st.name, ...STAGES.map((s) => r.counts[s.id]), ...SPLIT.map((id) => r.updates[id]), r.note]);
+    out.push([st.name, ...STAGES.map((s) => r.counts[s.id]), ...SPLIT.map((id) => r.updates[id]), streamTotal(r), r.note]);
   }
-  out.push(["Total", ...STAGES.map((s) => m.totals[s.id]), ...SPLIT.map((id) => m.upds[id])]);
+  out.push(["Total", ...STAGES.map((s) => m.totals[s.id]), ...SPLIT.map((id) => m.upds[id]), m.authored]);
   out.push(["Not previously published", ...STAGES.map((s) => (s.pre ? m.news[s.id] : ""))]);
   out.push([]);
   out.push(["Total regimens authored", m.authored]);
